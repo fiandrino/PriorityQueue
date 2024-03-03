@@ -12,11 +12,11 @@ namespace PriorityQueue
     /// <typeparam name="T">T must implement the IComparable<T> interface</typeparam>
     public class PriorityQueue<T> where T : IComparable<T>
     {
-        private List<T> _heapTree;
+        private List<T> _list;
 
         public PriorityQueue()
         {
-            _heapTree = new List<T>();
+            _list = new List<T>();
         }
 
         /// <summary>
@@ -25,8 +25,8 @@ namespace PriorityQueue
         /// <param name="item"></param>
         public void Enqueue(T item)
         {
-            _heapTree.Add(item);
-            _heapTree.Sort();
+            _list.Add(item);
+            _list.Sort();
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace PriorityQueue
                 throw new InvalidOperationException("Queue is empty");
             }
 
-            T item = _heapTree[0];
-            _heapTree.RemoveAt(0);
+            T item = _list[0];
+            _list.RemoveAt(0);
             return item;
         }
 
@@ -51,7 +51,7 @@ namespace PriorityQueue
         /// <returns></returns>
         public bool IsEmpty()
         {
-            return _heapTree.Count == 0;
+            return _list.Count == 0;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace PriorityQueue
                 throw new InvalidOperationException("Queue is empty");
             }
 
-            return _heapTree[0];
+            return _list[0];
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace PriorityQueue
                 throw new InvalidOperationException("Queue is empty");
             }
 
-            return _heapTree[_heapTree.Count - 1];
+            return _list[_list.Count - 1];
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace PriorityQueue
                 throw new InvalidOperationException("Queue is empty");
             }
 
-            return _heapTree[0];
+            return _list[0];
         }
     }
 }
