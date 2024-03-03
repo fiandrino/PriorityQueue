@@ -11,7 +11,27 @@ namespace DRIVER
     {
         static void Main(string[] args)
         {
-            PriorityQueue<string> p = new PriorityQueue<string>();
+            var priorityQueue = new PriorityQueue<Test>();
+
+            priorityQueue.Enqueue(new Test(5));
+            priorityQueue.Enqueue(new Test(2));
+
+            Test highestPriorityItem = priorityQueue.Dequeue(); // Verifica che restituisca 5
+
+        }
+
+        public class Test : IComparable<Test>
+        {
+            private int _tipo;
+
+            public Test(int tipo) => Tipo = tipo;
+
+            public int Tipo { get => _tipo; set => _tipo = value; }
+
+            public int CompareTo(Test other)
+            {
+                return this.Tipo.CompareTo(other.Tipo);
+            }
         }
     }
 }
